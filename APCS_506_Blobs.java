@@ -13,10 +13,6 @@
 // Lab Complete
 // Score 10/10
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-
 /** Tester class for Blobs game */
 public class APCS_506_Blobs {
 	
