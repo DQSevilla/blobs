@@ -14,4 +14,9 @@ import java.awt.event.MouseAdapter;
  * @since 12/01/2016
  */
 public class BlobsMouseListener extends MouseAdapter {
+    private ColorGrid grid;
+
+    public BlobsMouseListener(ColorGrid grid) {
+        this.grid = grid;
+    }
 }
