@@ -1,3 +1,13 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /* APCS 506: Blobs
  * @author David Sevilla
  *
@@ -79,6 +89,7 @@ class Blobs {
 		grid = new ColorGrid(size, size, 10);
 		board = new JFrame("Blobs");
 		board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		board.getContentPane().add(grid);
 		board.pack();
 		board.setLocation(0,0);
