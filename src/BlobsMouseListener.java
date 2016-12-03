@@ -1,7 +1,9 @@
+package blobs.src;
+//I need the above line in order to compile in eclipse
 /* BlobsMouseListener.java
  * 
  * I pledge my honor that I have abided by the Stevens Honor System.
- * David Sevilla
+ * David Sevilla..Nick Gattuso
  */
 
 import java.awt.event.MouseAdapter;
