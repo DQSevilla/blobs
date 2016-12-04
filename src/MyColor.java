@@ -1,3 +1,4 @@
+package blobs.src;
 /* MyColor.java
  * 
  * I pledge my honor that I have abided by the Stevens Honor System.
