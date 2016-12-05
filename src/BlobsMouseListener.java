@@ -50,6 +50,9 @@ public class BlobsMouseListener extends MouseAdapter {
                 for(int j = 0; j < labels[i].length; j++) {
 
                     if(labels[i][j] == e.getSource()) {
+                        if(grid.getColorArray()[i][j].getNumber() == blob.getTurn()) {
+                            return;
+                        }
                         blob.pick(i, j);
                         blob.switchTurn();
                         break;

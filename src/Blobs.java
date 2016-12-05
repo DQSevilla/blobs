@@ -103,6 +103,10 @@ public class Blobs {
         }
     }
 
+    public int getTurn() {
+        return turn;
+    }
+
     /**
      * Checks if any player has won the game yet and, if so, prints
      * a congratulatory message, and terminates the program.
