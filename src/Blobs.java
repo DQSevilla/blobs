@@ -6,6 +6,11 @@ package blobs.src;
  */
 
 import javax.swing.JFrame;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import javax.swing.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,7 +20,7 @@ import javax.swing.JOptionPane;
  * @version 1.0
  * @since 12/01/2016
  */
-public class Blobs {
+public class Blobs implements ActionListener{
     private ColorGrid grid;
     private JFrame board;
     private final int SIZE;
@@ -41,6 +46,37 @@ public class Blobs {
         board.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         board.getContentPane().add(this.grid);
         board.pack();
+        
+///////JMenu
+        JMenuBar menuBar;
+        JMenu menu;
+        JMenuItem menuItem;
+        
+        menuBar = new JMenuBar();
+
+        //Build the first menu.
+
+        menu = new JMenu("Options");
+        menu.setMnemonic(KeyEvent.VK_A);
+        menu.getAccessibleContext().setAccessibleDescription(
+          "The only menu in this program that has menu items");
+        menuBar.add(menu);
+
+        //a group of JMenuItems
+        menuItem = new JMenuItem("Change Player Colors",
+                           KeyEvent.VK_T);
+        menuItem.setAccelerator(KeyStroke.getKeyStroke(
+          KeyEvent.VK_1, ActionEvent.ALT_MASK));
+        menuItem.getAccessibleContext().setAccessibleDescription(
+          "This doesn't really do anything");
+        menu.add(menuItem);
+        board.setJMenuBar(menuBar);
+        menuItem.setActionCommand("change");
+        menuItem.addActionListener(this);
+/////////End JMenu
+        
+        
+        
         if(SIZE < 40) {
             board.setSize(SIZE*20, SIZE*20);
         }
@@ -123,6 +159,13 @@ public class Blobs {
         JOptionPane.showMessageDialog(null, "Player " + turn + " has won the game!");
         System.exit(0);
     }
+    
+    @Override
+	public void actionPerformed(ActionEvent e) {
+		if("change".equals(e.getActionCommand())){
+	        System.out.println("Stuff");
+	    }
+	}
 
     // TODO: Add color choice implementation
     public static void main(String[] args) {
@@ -147,4 +190,6 @@ public class Blobs {
         }
         Blobs blob = new Blobs(size);
     }
+
+	
 }
