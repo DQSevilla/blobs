@@ -1,17 +1,19 @@
 /* ColorGrid.java
  * 
  * I pledge my honor that I have abided by the Stevens Honor System.
- * David Sevilla
+ * David Sevilla, Nick Gattuso
  */
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 
 /**
- * The ColorGrid object is the main grid in Blobs
+ * The ColorGrid object is the main grid in Blobs, maintaining an
+ * array of colors and of JLabels to fill the GUI
  *
- * @author David Sevilla
+ * @author David Sevilla, Nick Gattuso
  * @version 1.0
  * @since 12/01/2016
  */
@@ -28,6 +30,11 @@ public class ColorGrid extends JPanel {
         initGrid();
     }
 
+    /**
+     * Initializes the grid with a grid layout and randomly
+     * selects tiles to be one of the two colors in the game.
+     * MouseListeners are added to each JLabel.
+     */
     private void initGrid() {
         int rows, cols;
         rows = cols = colors.length;
@@ -38,7 +45,7 @@ public class ColorGrid extends JPanel {
             for(int col = 0; col < cols; col++) {
                 JLabel label = new JLabel();
                 label.setOpaque(true);
-                MyColor color = (Math.random() > 0.5) ? MyColor.BLACK : MyColor.WHITE;
+                MyColor color = (Math.random() > 0.5) ? MyColor.BLACK : MyColor.WHITE; // TODO change this
                 this.colors[row][col] = color;
                 label.setBackground(color.getColor());
                 label.addMouseListener(this.listener);
@@ -58,5 +65,19 @@ public class ColorGrid extends JPanel {
         return this.labels;
     }
 
-    // TODO: See if I can work around passing around a Blobs instance to the listener
+    public void addBlob(Blobs blob) {
+        listener.addBlob(blob);
+    }
+
+    /**
+     * Changes the color of the tile at the current given position
+     * to the opposite color, updating the grid.
+     * @param row the given row
+     * @param col the given column
+     */
+    public void changeBoard(int row, int col) {
+        int num = colors[row][col].getNumber();
+        colors[row][col] = (num == 0) ? MyColor.WHITE : MyColor.BLACK; // TODO change this
+        this.labels[row][col].setBackground(colors[row][col].getColor());
+    }
 }
