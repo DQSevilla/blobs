@@ -1,4 +1,3 @@
-package blobs.src;
 //I need the above line in order to compile in eclipse
 /* BlobsMouseListener.java
  * 

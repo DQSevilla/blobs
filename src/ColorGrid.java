@@ -1,4 +1,3 @@
-package blobs.src;
 
 /* ColorGrid.java
  * 
@@ -6,10 +5,10 @@ package blobs.src;
  * David Sevilla, Nick Gattuso
  */
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.Color;
 
 /**
  * The ColorGrid object is the main grid in Blobs, maintaining an
@@ -47,7 +46,9 @@ public class ColorGrid extends JPanel {
             for(int col = 0; col < cols; col++) {
                 JLabel label = new JLabel();
                 label.setOpaque(true);
-                MyColor color = (Math.random() > 0.5) ? MyColor.BLACK : MyColor.WHITE; // TODO change this
+                MyColor dummy = new MyColor(Color.BLACK, 0); // dummy
+                Color temp = (Math.random() > 0.5) ? MyColor.getOption(0) : MyColor.getOption(1);
+                MyColor color = new MyColor(temp, MyColor.getNumOption(temp));
                 this.colors[row][col] = color;
                 label.setBackground(color.getColor());
                 label.addMouseListener(this.listener);
@@ -71,6 +72,18 @@ public class ColorGrid extends JPanel {
         listener.addBlob(blob);
     }
 
+    public void changeColor(Color color, int player) {
+        int opposite = (player == 0) ? 1 : 0;
+        for(int i = 0; i < labels.length; i++) {
+            for(int j = 0; j < labels[i].length; j++) {
+                if(colors[i][j].getNumber() == player) {
+                    colors[i][j] = new MyColor(color, player);
+                    labels[i][j].setBackground(color);
+                }
+            }
+        }
+    }
+
     /**
      * Changes the color of the tile at the current given position
      * to the opposite color, updating the grid.
@@ -79,7 +92,8 @@ public class ColorGrid extends JPanel {
      */
     public void changeBoard(int row, int col) {
         int num = colors[row][col].getNumber();
-        colors[row][col] = (num == 0) ? MyColor.WHITE : MyColor.BLACK; // TODO change this
+        Color color = (num == 0) ? MyColor.getOption(1) : MyColor.getOption(0);
+        colors[row][col] = new MyColor(color, MyColor.getNumOption(color));
         this.labels[row][col].setBackground(colors[row][col].getColor());
     }
 }

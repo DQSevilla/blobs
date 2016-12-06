@@ -1,18 +1,23 @@
-package blobs.src;
 /* Blobs.java
  * 
  * I pledge my honor that I have abided by the Stevens Honor System.
  * David Sevilla, Nick Gattuso
  */
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+import java.awt.Color;
 
 /**
  * Main class for implementing the game Blobs.
@@ -48,7 +53,6 @@ public class Blobs implements ActionListener{
         board.getContentPane().add(this.grid);
         board.pack();
         
-///////JMenu
         JMenuBar menuBar;
         JMenu menu;
         JMenuItem menuItem;
@@ -74,9 +78,6 @@ public class Blobs implements ActionListener{
         board.setJMenuBar(menuBar);
         menuItem.setActionCommand("change");
         menuItem.addActionListener(this);
-/////////End JMenu
-        
-        
         
         if(SIZE < 40) {
             board.setSize(SIZE*20, SIZE*20);
@@ -179,15 +180,27 @@ public class Blobs implements ActionListener{
 			p.add(playerList, BorderLayout.EAST);
 			
 			JOptionPane.showMessageDialog(null, p, "Multi-Select Example", JOptionPane.PLAIN_MESSAGE);
-			
-			//how to..
-			System.out.println("The player::" + playerList.getSelectedIndex() + " The color: " + colorSel.getSelectedItem());
-			
-			////// TODO: Put logic here !!!!
+
+			int player = playerList.getSelectedIndex();
+			Object col = colorSel.getSelectedItem();
+			if(col.equals("Red")) {
+			    this.grid.changeColor(Color.RED, player); // TODO ERROR CHECKING
+            }
+            else if(col.equals("Blue")) {
+			    this.grid.changeColor(Color.BLUE, player);
+            }
+            else if(col.equals("Green")) {
+			    this.grid.changeColor(Color.GREEN, player);
+            }
+            else if(col.equals("Black")) {
+			    this.grid.changeColor(Color.BLACK, player);
+            }
+            else {
+			    this.grid.changeColor(Color.WHITE, player);
+            }
 	    }
 	}
 
-    // TODO: Add color choice implementation
     public static void main(String[] args) {
         // Fixes a weird Swing bug for large input sizes
         System.setProperty("java.util.Arrays.useLegacyMergeSort", "true");
