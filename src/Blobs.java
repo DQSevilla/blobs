@@ -7,6 +7,7 @@ package blobs.src;
 
 import javax.swing.JFrame;
 
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -163,7 +164,22 @@ public class Blobs implements ActionListener{
     @Override
 	public void actionPerformed(ActionEvent e) {
 		if("change".equals(e.getActionCommand())){
-	        System.out.println("Stuff");
+			
+			JPanel p = new JPanel(new BorderLayout());
+			
+			String[] playerStrings = { "Player 0" , "Player 1" };
+			JComboBox playerList = new JComboBox(playerStrings);
+			JLabel label = new JLabel("Please enter a color code");
+			JTextField textField = new JTextField(20);
+			
+			p.add(textField, BorderLayout.SOUTH);
+			p.add(label, BorderLayout.WEST);
+			p.add(playerList, BorderLayout.EAST);
+			
+			JOptionPane.showMessageDialog(null, p, "Multi-Select Example", JOptionPane.PLAIN_MESSAGE);
+			
+			
+			////// TODO: Put logic here !!!!
 	    }
 	}
 
