@@ -180,6 +180,8 @@ public class Blobs implements ActionListener{
 			
 			JOptionPane.showMessageDialog(null, p, "Multi-Select Example", JOptionPane.PLAIN_MESSAGE);
 			
+			//how to..
+			System.out.println("The player::" + playerList.getSelectedIndex() + " The color: " + colorSel.getSelectedItem());
 			
 			////// TODO: Put logic here !!!!
 	    }
