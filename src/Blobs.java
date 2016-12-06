@@ -170,9 +170,11 @@ public class Blobs implements ActionListener{
 			String[] playerStrings = { "Player 0" , "Player 1" };
 			JComboBox playerList = new JComboBox(playerStrings);
 			JLabel label = new JLabel("Please enter a color code");
-			JTextField textField = new JTextField(20);
 			
-			p.add(textField, BorderLayout.SOUTH);
+			String[] colorPos = { "Black" , "White" , "Red" , "Blue" , "Green" };
+			JComboBox colorSel = new JComboBox(colorPos);
+			
+			p.add(colorSel, BorderLayout.SOUTH);
 			p.add(label, BorderLayout.WEST);
 			p.add(playerList, BorderLayout.EAST);
 			
